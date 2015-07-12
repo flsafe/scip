@@ -65,9 +65,9 @@
 (define (print-pascal level)
   (pascal '(1) 0 level))
 
-(define (pascal prev i max)
+(define (pascal curr i max)
     (when (< i max)
-        (let* ([next (map-next-pascal prev '() 0)])
-          (writeln prev)
+        (let* ([next (map-next-pascal curr '() 0)])
+          (writeln curr)
           (pascal next (+ i 1) max))))
 
