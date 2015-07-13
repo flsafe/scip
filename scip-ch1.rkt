@@ -71,3 +71,14 @@
           (writeln curr)
           (pascal next (+ i 1) max))))
 
+; Exponentiation
+
+(define (fast-expt b n)
+  (cond ((= n 0) 1)
+        ((even? n) (square (fast-expt b (/ n 2))))
+        (else (* b (fast-expt b (- n 1))))))
+
+(define (expt-slow b n)
+  (cond ((= n 0) 1)
+        (else (* b (expt b (- n 1))))))
+
