@@ -71,14 +71,20 @@
           (writeln curr)
           (pascal next (+ i 1) max))))
 
-; Exponentiation
+; Exponentiation by succesive squares
 
-(define (fast-expt b n)
+ (define (iter-expt a b n)
+    (cond ((= n 0) a)
+          ((odd? n) (iter-expt (* a b) (square b) (quotient n 2)))
+          (else
+           (iter-expt a (square b) (quotient n 2)))))
+
+(define (recursive-expt b n)
   (cond ((= n 0) 1)
-        ((even? n) (square (fast-expt b (/ n 2))))
-        (else (* b (fast-expt b (- n 1))))))
+        ((even? n) (square (recursive-expt b (/ n 2))))
+        (else (* b (recursive-expt b (- n 1))))))
 
-(define (expt-slow b n)
+(define (linear-expt b n)
   (cond ((= n 0) 1)
         (else (* b (expt b (- n 1))))))
 
