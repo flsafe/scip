@@ -88,3 +88,17 @@
   (cond ((= n 0) 1)
         (else (* b (expt b (- n 1))))))
 
+; Multiplication via doubling
+
+(define (double x) (* x 2))
+
+(define (recur-mult a t)
+  (cond
+    ((= t 0) 0)
+    ((= t 1) a)
+    (else
+     (+ (double a) (recur-mult a (- t 2))))))
+
+; Multiplication via doubling and halfing
+
+
